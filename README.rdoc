@@ -2,9 +2,10 @@
 
 This Rails plugin allows users to take advantage of nginx's X-Accel-Redirect header, similar to X-Send-File.
 
-=== Credits
+==== Credits
 
 This plugin was inspired in the x_send_file plugin, which was created before the option :x_sendfile dropped in Rails <i>send_file</i> method (supported since version 2.1).
+
 
 == Install
 
@@ -14,6 +15,7 @@ You should install it as a plugin, running this command on your projects root di
 
 If everything goes correctly, your application is now ready to use the nginx's X-Accel-Redirect transparently.
 
+
 == Usage
 
 X-Accel-Redirect has an equivalent method to Rails <i>send_file</i>, called <b>x_accel_redirect</b>. Using is as easy as:
@@ -21,6 +23,7 @@ X-Accel-Redirect has an equivalent method to Rails <i>send_file</i>, called <b>x
      x_accel_redirect "/path/to/file", :filename => "filename"
 
 All <i>send_file</i> options are available using this method. Avoid using the <b>:x_send_file</b> with this method because you're going to be mixing headers and weird things can happen.
+
 
 === Overriding Rails default send_file
 
