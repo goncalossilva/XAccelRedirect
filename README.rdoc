@@ -21,7 +21,7 @@ X-Accel-Redirect has an equivalent method to Rails <i>send_file</i>, called <b>x
 
      x_accel_redirect "/path/to/file", :filename => "filename"
 
-All <i>send_file</i> options are available using this method. Avoid using the <b>:x_send_file</b> with this method because you're going to be mixing headers and weird things can happen.
+All <i>send_file</i> options are available using this method. <del>Avoid using the <b>:x_sendfile</b> with this method because you're going to be mixing headers and weird things can happen.</del> Now you can even let your old <b>:x_sendfile</b> option since the plugin will discard it.
 
 
 === Overriding Rails default send_file
@@ -33,6 +33,8 @@ Just add the following line to your environment.rb:
      XAccelRedirect::Plugin.replace_send_file!
 
 And it's done. Now everytime you call <i>send_file</i> you'll be using <b>x_accel_redirect</b> instead.
+
+You can still access the normal <i>send_file</i> even after specifying the on environment.rb, using the <i>send_file_without_x_accel_redirect</i> method.
 
 
 == Notes

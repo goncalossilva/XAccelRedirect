@@ -39,14 +39,12 @@ module XAccelRedirect
     #   Defaults to 'X-Sendfile'.
     # * <tt>:file_paths</tt> - list of acceptible file paths
     # * <tt>:root</tt> - the root directory is removed when file path specified in header
+    #
     # Simple download:
     #   x_accel_redirect '/path/to/file'
     #
     # Show a JPEG in the browser:
     #   x_accel_redirect('/path/to/image.jpg', :type => 'image/jpeg', :disposition => 'inline')
-    #
-    # Send file using Lighttpd:
-    #   x_accel_redirect '/path/to/file, :header => 'X-LIGHTTPD-SEND-FILE'
     #
     # x_accel_redirect's options and defaults mirror those of send_file.  Please see
     # ActionController::Streaming#send_file for more detailed information about
@@ -55,8 +53,9 @@ module XAccelRedirect
 
       raise ActionController::MissingFile, "Cannot read file #{path}" unless File.file?(path) and File.readable?(path)
 
-      # pull in default values for options
+      # pull in default values for options and delete x_sendfile option if present
       options.reverse_merge!(Plugin.options)
+      options.delete(:x_sendfile)
 
       #raise expeption if path is not include
       if Array(options[:file_paths]).any? && (File.expand_path(path) =~ Regexp.new("^(%s)" % Array(options[:file_paths]).join('|'))).nil?
