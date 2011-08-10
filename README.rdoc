@@ -1,4 +1,4 @@
-= X-Accel-Redirect
+= XAccelRedirect
 
 This Rails plugin allows users to take advantage of nginx's X-Accel-Redirect header, similar to X-Send-File.
 
@@ -10,7 +10,7 @@ This plugin was inspired in the x_send_file plugin, which was created before the
 
 You should install it as a plugin, running this command on your projects root directory:
 
-     $ script/plugin install git://github.com/goncalossilva/X-Accel-Redirect.git
+     $ script/plugin install git://github.com/goncalossilva/XAccelRedirect.git
 
 If everything goes correctly, your application is now ready to use the nginx's X-Accel-Redirect transparently.
 
